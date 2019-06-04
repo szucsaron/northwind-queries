@@ -27,8 +27,9 @@ order by count(*);
 select company_name as CompanyName,
 array_to_string(array_agg(orders.order_id), ',') as Orders
 from customers
-right join orders on customers.customer_id = orders.customer_id 
-group by customers.company_name;
+left join orders on customers.customer_id = orders.customer_id 
+group by customers.company_name
+order by companyname;
 
 --Task 5
 
